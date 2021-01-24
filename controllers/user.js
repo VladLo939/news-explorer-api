@@ -1,6 +1,6 @@
-const Users = require('../models/user');
+const User = require('../models/user');
 
 module.exports.getUserInfo = (req, res) => {
-  Users.find({})
-    .then((users) => res.send({ data: users }));
+  User.findById(req.params.id)
+    .then((user) => res.send({ data: user }));
 };
