@@ -2,7 +2,7 @@
   "name": "news-explorer-api",
   "version": "1.0.0",
   "description": "news-explorer",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
@@ -20,7 +20,8 @@
   "dependencies": {
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.13"
   },
   "devDependencies": {
     "eslint": "^7.18.0",
