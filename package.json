@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/VladLo939/news-explorer-api#readme",
   "dependencies": {
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "eslint": "^7.18.0",
     "nodemon": "^2.0.7"
   }
 }
