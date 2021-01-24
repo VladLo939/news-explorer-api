@@ -19,7 +19,8 @@
   "homepage": "https://github.com/VladLo939/news-explorer-api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.11.13"
+    "mongoose": "^5.11.13",
+    "validator": "^13.5.2"
   },
   "devDependencies": {
     "eslint": "^7.18.0",
