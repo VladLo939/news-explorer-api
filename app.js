@@ -6,6 +6,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 const userRouter = require('./routes/user');
+const articleRouter = require('./routes/article');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +28,7 @@ app.post('/signin', login);
 app.use(auth);
 
 app.use('/users', userRouter);
+app.use('/articles', articleRouter);
 
 app.use(errorHandler);
 
