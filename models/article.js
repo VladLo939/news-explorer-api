@@ -42,7 +42,7 @@ const schemaArticle = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     select: false,
-    ref: 'users',
+    ref: 'user',
   },
 });
 

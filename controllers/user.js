@@ -22,7 +22,7 @@ module.exports.createUser = (req, res, next) => {
   if (!patten.test(password)) {
     throw new BadRequestError('Invalid password');
   } else if (!password) {
-    throw new BadRequestError('user validation failed: password: Path `password` is required.');
+    throw new BadRequestError('Password is required');
   }
 
   bcrypt.hash(password, 10)
