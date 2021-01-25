@@ -17,7 +17,18 @@ mongoose.connect('mongodb://localhost:27017/newsapi', {
   useUnifiedTopology: true,
 });
 
+const { createUser, login } = require('./controllers/user');
+const auth = require('./middleware/auth');
+const { errorHandler } = require('./middleware/errorhander');
+
+app.post('/signup', createUser);
+app.post('/signin', login);
+
+app.use(auth);
+
 app.use('/users', userRouter);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
 });
