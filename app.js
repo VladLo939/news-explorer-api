@@ -21,7 +21,10 @@ mongoose.connect('mongodb://localhost:27017/newsapi', {
 
 const { createUser, login } = require('./controllers/user');
 const auth = require('./middleware/auth');
+const { requestLogger, errorLogger } = require('./middleware/logger');
 const { errorHandler } = require('./middleware/errorhander');
+
+app.use(requestLogger);
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -42,6 +45,7 @@ app.use(auth);
 app.use('/users', userRouter);
 app.use('/articles', articleRouter);
 
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
