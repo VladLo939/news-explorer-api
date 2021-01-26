@@ -15,7 +15,15 @@ module.exports.addArticle = (req, res, next) => {
   Article.create({
     keyword, title, text, date, source, link, image, owner: req.user._id,
   })
-    .then((articles) => res.json({ data: articles }))
+    .then((articles) => res.json({
+      keyword: articles.keyword,
+      title: articles.title,
+      text: articles.text,
+      date: articles.date,
+      source: articles.source,
+      link: articles.link,
+      image: articles.image,
+    }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Неверные данные');
