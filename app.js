@@ -2,12 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { celebrate, Joi, errors } = require('celebrate');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
 
-const userRouter = require('./routes/user');
-const articleRouter = require('./routes/article');
+app.use(helmet());
+app.use(limiter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,6 +25,8 @@ mongoose.connect('mongodb://localhost:27017/newsapi', {
   useUnifiedTopology: true,
 });
 
+const userRouter = require('./routes/user');
+const articleRouter = require('./routes/article');
 const { createUser, login } = require('./controllers/user');
 const auth = require('./middleware/auth');
 const { requestLogger, errorLogger } = require('./middleware/logger');
