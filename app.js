@@ -4,14 +4,10 @@ const mongoose = require('mongoose');
 const { celebrate, Joi, errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
+const limiter = require('./middleware/ratelimiter');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-});
 
 app.use(helmet());
 app.use(limiter);
