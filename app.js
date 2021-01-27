@@ -32,6 +32,7 @@ const { createUser, login } = require('./controllers/user');
 const auth = require('./middleware/auth');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { errorHandler } = require('./middleware/errorhander');
+const { notFound } = require('./controllers/notFound');
 
 app.use(requestLogger);
 
@@ -53,6 +54,7 @@ app.use(auth);
 
 app.use('/users', userRouter);
 app.use('/articles', articleRouter);
+app.use(notFound);
 
 app.use(errorLogger);
 app.use(errors());
