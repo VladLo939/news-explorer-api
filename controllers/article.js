@@ -37,8 +37,9 @@ module.exports.deleteArticle = (req, res, next) => {
     .orFail(() => new Error('Not found'))
     .then((card) => {
       if (card.owner._id.toString() === req.user._id) {
-        card.remove();
-        res.send(card);
+        card.remove().then(() => {
+          res.send({ message: 'Карточка удалена' });
+        });
       } else next(new ForbiddenError('Попытка удалить чужую карточку'));
     })
     .catch((err) => {
